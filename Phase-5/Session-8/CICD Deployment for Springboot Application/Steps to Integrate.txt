@@ -1,0 +1,100 @@
+******* Jenkins integration with Docker ******
+
+******* create pipeline to build docker image using jenkins and push the same on docker hub ******
+
+step1: create instance and install docker
+•	goto your amazon console account and create 1 instance
+	AMI: ubantu OS
+	chnage volume size: 30
+	in security groups add all tcp and http
+
+	before launching the instance download the pem file 
+	using that we can connect to mobaXterm
+
+•	start mobaXterm
+	move to that location where you have stored .pem file
+
+	execute ssh command provided on ssh client
+
+•	install docker on instance
+
+	1. set up the repo
+	> sudo apt-get update
+	> sudo apt-get install ca-certificates curl gnupg lsb-release
+	2. Add Docker’s official GPG key:
+
+	>curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+
+	> echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list /dev/null
+
+	3. Install Docker
+
+	> sudo apt-get update
+ 	> sudo apt-get install docker-ce docker-ce-cli containerd.io
+	it will prompt do you want to continue type Y 
+
+•	if docker installed chek versions
+	docker -v or docker --version
+	sudo docker info
+step 2: install jdk
+> sudo apt-get update
+>sudo apt install default-jdk -y
+step 3: install maven
+> sudo apt-get update
+>sudo apt install maven -y
+
+step 4: install jenkins
+
+>curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+>echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]  https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+>sudo apt-get update
+>sudo apt-get install Jenkins
+
+It will prompt > type y to install
+********start Jenkins service ***********
+>sudo service jenkins start
+>sudo service Jenkins status
+
+From the startus you can copy the password if not then
+> sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+Copy the password and open yourPublicIp:8080
+Enter initial password + install suggested plugins + set up you account and start Jenkins
+
+Once you are in Jenkins dashboard then let’s install docker plugin
+manageJenkins> managePlugins> available> search for Docker> install docker plugin without restart
+
+Configure docker cloud in Jenkins
+manageJenkins> manage nodes and clouds> configure cloud (left side)>
+
+ 
+Click on add a new cloud
+Select docker from the dropdown
+
+ 
+Click on docker cloud details
+
+ 
+Keep name docker only
+Add Host URI:  unix:///var/run/docker.sock
+
+
+Click on test connection and check getting error of permission denied then execute this command on your console
+sudo chmod 777 /var/run/docker.sock
+you can open configure cloud again and check the connection it will show you docker version
+
+ 
+Let’s create a freestyle project(job)
+
+ 
+Configure project
+
+Click on add build step
+
+As docker file inside the root folder the directory of dockerfile kept empty
+In cloud select docker
+Add image name, add docker hub credentials
+ 
+ 
+Click on save and build now.
+
+

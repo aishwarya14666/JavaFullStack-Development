@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        var map = new Map();
+        map.set("laptop",30000);
+        map.set("WiFi",1000);
+        map.set("Infrastructure",10000);
+        map.set("Salary",30000);
+
+        function add(name, cost) 
+        {
+            if (map.has(name)) 
+            {
+                value = map.get(name)
+                map.set(name, cost + value)
+                console.log("the expense at name " + name + " is updated")
+                document.write("<br>the expense at name " + name + " is updated<br>")
+            }
+            else
+                map.set(name, cost)
+            console.log("the new name" + name + " is added and it's cost is " + cost)
+            document.write("<br>the new name " + name + " is added and it's cost is " + cost+"<br>")
+        }
+        function remove(name) 
+        {
+            map.delete(name)
+            console.log("deleted name :" + map.delete(name))
+            document.write("<br>deleted name : "+name+"<br>")
+        }
+        function show() 
+        {
+            console.log(map)
+            document.write("<br>The cost according to name are : <br>")
+            map.forEach((sum, name) => { document.write(name + ") " + sum + "<br>") })
+
+        }
+        function calBudget() 
+        {
+            var value = 0;
+            var sum;
+
+            map.forEach(sum => { value = sum + value })
+
+            console.log(value);
+            document.write(" <br> The total Expense is : " + value+"<br>")
+        }
+
+        show()
+        remove("WiFi")
+        add("Other expenses",13000)
+        add("Other Equipments",24000)
+        show()
+        add("laptop",38000)
+        calBudget()
+        remove("Other Equipments")
+        show()
+        calBudget()
+        
+    </script>
+</body>
+
+</html>
