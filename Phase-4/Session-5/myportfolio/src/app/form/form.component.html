@@ -1,0 +1,84 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <h2>Registration Form</h2>
+                <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" [(ngModel)]="userData.firstName" formControlName="firstName" class="form-control"
+                        [ngClass]="{'is-invalid':submitted && f['firstName'].errors}">
+
+                        <div *ngIf="submitted && f['firstName'].errors" class="invalid-feedback">
+                            <div *ngIf="f['firstName'].errors['required']">
+                                The value for First Name is Required
+                            </div>
+                        </div>
+                    </div>
+            
+
+                    <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" [(ngModel)]="userData.lastName" formControlName="lastName" class="form-control"
+                        [ngClass]="{'is-invalid':submitted && f['lastName'].errors}">
+
+                        <div *ngIf="submitted && f['lastName'].errors" class="invalid-feedback">
+                            <div *ngIf="f['lastName'].errors['required']">
+                                The value for Last Name is Required
+                            </div>
+                        </div>
+                    </div>
+
+                    
+
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="text" [(ngModel)]="userData.email" formControlName="email" class="form-control"
+                        [ngClass]="{'is-invalid':submitted && f['email'].errors}">
+
+                        <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                            <div *ngIf="f['email'].errors['required']">
+                                The value for Email is Required
+                            </div>
+                            <div *ngIf="f['email'].errors['email']">
+                                Email is not valid
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Qualification</label>
+                        <input type="text" [(ngModel)]="userData.qualification" formControlName="qualification" class="form-control"
+                        [ngClass]="{'is-invalid':submitted && f['qualification'].errors}">
+
+                        <div *ngIf="submitted && f['qualification'].errors" class="invalid-feedback">
+                            <div *ngIf="f['qualification'].errors['required']">
+                                The value for Qualification is Required
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Skills</label>
+                        <input type="text" [(ngModel)]="userData.skills" formControlName="skills" class="form-control"
+                        [ngClass]="{'is-invalid':submitted && f['skills'].errors}">
+
+                        <div *ngIf="submitted && f['skills'].errors" class="invalid-feedback">
+                            <div *ngIf="f['skills'].errors['required']">
+                                The value for Skills is Required
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    
+
+                    <div class="form-group">
+                        <button class="btn btn-primary">Register</button>
+                    </div>
+                     
+                </form>
+            </div>
+        </div>
+    </div>
