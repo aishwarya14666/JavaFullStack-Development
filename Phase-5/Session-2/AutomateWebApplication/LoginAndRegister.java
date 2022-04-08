@@ -19,7 +19,7 @@ public static void main(String[] args) {
         driver.get("https://profile.oracle.com/myprofile/account/create-account.jspx");
         
         WebElement email = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:email::content\"]"));
-        email.sendKeys("aishwaryachougule14666@gmail.com");
+        email.sendKeys("************************");
         
         WebElement password = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:password::content\"]"));
         password.sendKeys("**********");
@@ -31,32 +31,32 @@ public static void main(String[] args) {
         country.selectByValue("IN");
         
         WebElement firstname = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:firstName::content\"]"));
-        firstname.sendKeys("Aishwarya");
+        firstname.sendKeys("************************");
         
         WebElement lastname = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:lastName::content\"]"));
-        lastname.sendKeys("Chougule");
+        lastname.sendKeys("**********");
         
         WebElement jobtitle = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:jobTitle::content\"]"));
-        jobtitle.sendKeys("Associate Software Engineer");
+        jobtitle.sendKeys("**************************");
         
         WebElement workphone = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:workPhone::content\"]"));
-        workphone.sendKeys("7349302086");
+        workphone.sendKeys("*********");
         
         
         WebElement companyname = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:companyName::content\"]"));
-        companyname.sendKeys("Mphasis");
+        companyname.sendKeys("*********");
         
         WebElement address = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:address1::content\"]"));
-        address.sendKeys("Vadgaon,Belgaum");
+        address.sendKeys("**************");
         
         WebElement city = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:city::content\"]"));
-        city.sendKeys("Belgaum");
+        city.sendKeys("********");
         
         Select state = new Select(driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:state::content\"]")));
         state.selectByValue("16");
         
         WebElement zipcode = driver.findElement(By.xpath("//*[@id=\"sView1:r1:0:postalCode::content\"]"));
-        zipcode.sendKeys("590005");
+        zipcode.sendKeys("********");
         
         WebElement link = driver.findElement(By.linkText("Create Account"));
 		link.click();
@@ -70,7 +70,7 @@ public static void main(String[] args) {
 		
 		
 		 WebElement username = driver.findElement(By.xpath("//*[@id=\"sso_username\"]"));
-	     username.sendKeys("aishwaryachougule14666@gmail.com");
+	     username.sendKeys("**********************");
 	        
 	     WebElement pass = driver.findElement(By.xpath("//*[@id=\"ssopassword\"]"));
 	     pass.sendKeys("**********");
